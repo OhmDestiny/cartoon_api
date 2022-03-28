@@ -6,6 +6,7 @@ $key= $_POST['key'];
 $result = $db->select("user","*",[
     'hashkey'=>$key
 ]);
+
 if(sizeof($result) > 0){
     if($result[0]['category'] == 1){
         $db->insert("category",
