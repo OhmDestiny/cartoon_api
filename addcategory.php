@@ -13,7 +13,6 @@ if(sizeof($result) > 0){
         );
     } else {
         echo "go to welcome";
-
     }
 } else {
     echo "go to login";
