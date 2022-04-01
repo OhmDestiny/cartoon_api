@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 31, 2022 at 11:49 PM
+-- Generation Time: Apr 01, 2022 at 10:21 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -32,12 +32,10 @@ CREATE TABLE `book` (
   `bookid` int(11) NOT NULL,
   `title` text NOT NULL,
   `catid` text NOT NULL,
+  `theme` int(11) NOT NULL,
   `synposis` text NOT NULL,
   `folder` text NOT NULL,
   `coverfile` text NOT NULL,
-  `bg_pc` text NOT NULL,
-  `bg_tablet` text NOT NULL,
-  `bg_mobile` text NOT NULL,
   `view` bigint(20) NOT NULL DEFAULT '0',
   `lastchapter` text NOT NULL,
   `online` int(11) NOT NULL DEFAULT '0',
@@ -48,9 +46,10 @@ CREATE TABLE `book` (
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`bookid`, `title`, `catid`, `synposis`, `folder`, `coverfile`, `bg_pc`, `bg_tablet`, `bg_mobile`, `view`, `lastchapter`, `online`, `timestamp`) VALUES
-(8, 'onepiece', '[1],[6]', 'การผจญภัย', 'onepiece', '8111.jpg', '8116.jpg', '8109.jpg', '8115.jpg', 0, '', 0, '2022-03-31 21:57:12'),
-(9, 'โดเรมอน', '[1],[6]', 'หุ่นยนต์น่ารัก', 'doraemon', '170652.jpg', 'iStock-1018336186 (3).jpg', 'jakob-owens-CiUR8zISX60-unsplash (1).jpg', 'ferdinand-stohr-NFs6dRTBgaM-unsplash.jpg', 0, '', 0, '2022-03-31 22:08:48');
+INSERT INTO `book` (`bookid`, `title`, `catid`, `theme`, `synposis`, `folder`, `coverfile`, `view`, `lastchapter`, `online`, `timestamp`) VALUES
+(8, 'onepiece', '[1],[6]', 0, 'การผจญภัย', 'onepiece', '8111.jpg', 0, '', 0, '2022-03-31 21:57:12'),
+(9, 'โดเรมอน', '[1],[6]', 0, 'หุ่นยนต์น่ารัก', 'doraemon', '170652.jpg', 0, '', 0, '2022-03-31 22:08:48'),
+(10, 'testx', '[1],[2]', 4, 'xxxxx', 'dddd', '8116.jpg', 0, '', 0, '2022-04-01 16:52:24');
 
 -- --------------------------------------------------------
 
@@ -89,6 +88,7 @@ CREATE TABLE `user` (
   `rank` int(11) NOT NULL,
   `ads` int(11) NOT NULL,
   `admin` int(11) NOT NULL,
+  `profilepic` int(11) NOT NULL DEFAULT '1',
   `hashkey` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -96,9 +96,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userid`, `username`, `password`, `book`, `category`, `rank`, `ads`, `admin`, `hashkey`) VALUES
-(1, 'test', '1234', 1, 1, 1, 1, 1, 'HKk*D2cFGB9th8SM'),
-(2, 'test2', 'dasd', 1, 0, 1, 1, 1, 'asdasdasd');
+INSERT INTO `user` (`userid`, `username`, `password`, `book`, `category`, `rank`, `ads`, `admin`, `profilepic`, `hashkey`) VALUES
+(1, 'test', '1234', 1, 1, 1, 1, 1, 1, 'PNZK)*UrsTfmIu2S'),
+(2, 'test2', 'dasd', 1, 0, 1, 1, 1, 1, 'asdasdasd'),
+(3, 'test3', '111222', 1, 1, 1, 0, 0, 2, '');
 
 --
 -- Indexes for dumped tables
@@ -130,7 +131,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `bookid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -142,7 +143,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
