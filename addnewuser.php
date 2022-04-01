@@ -29,6 +29,7 @@ if(sizeof($result) > 0){
         'category'=> $category,
         'rank'=> $rank,
         'ads'=> $ads,
+        'profilepic'=>rand(1,9),
         'admin'=> $admin]);
     echo  "add complete";
     } else {
