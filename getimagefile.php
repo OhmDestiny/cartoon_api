@@ -2,13 +2,8 @@
 require_once('connection.php');
 $id =$_POST['id'];
 $targetcover = "uploads/" . $id. '-cover.jpg';
-$targetbgPc =   "uploads/" . $id. '-bg-pc.jpg';
-$targetbgTablet =   "uploads/" . $id. '-bg-tablet.jpg';
-$targetbgMobile =   "uploads/" . $id. '-bg-mobile.jpg';
 move_uploaded_file($_FILES['filecoverfile']['tmp_name'],$targetcover);
-move_uploaded_file($_FILES["filebgpc"]["tmp_name"], $targetbgPc);
-move_uploaded_file($_FILES["filebgtablet"]["tmp_name"], $targetbgTablet);
-move_uploaded_file($_FILES["filebgmobile"]["tmp_name"], $targetbgMobile);
+
 // $target_dir = "uploads/";
 // $target_file = $target_dir . basename($_FILES["file01"]["name"]);
 // $uploadOk = 1;
