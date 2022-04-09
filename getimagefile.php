@@ -1,7 +1,7 @@
 <?php
 require_once('connection.php');
 $id =$_POST['id'];
-$targetcover = "uploads/" . $id. '-cover.jpg';
+$targetcover = "cover/" . $id. '.jpg';
 move_uploaded_file($_FILES['filecoverfile']['tmp_name'],$targetcover);
 
 // $target_dir = "uploads/";

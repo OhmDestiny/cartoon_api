@@ -30,4 +30,6 @@ $db = new Medoo([
 	"charset" => "utf8",
 ]);
 
+
+$itemperpage = 40;
 ?>

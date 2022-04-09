@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2022 at 10:21 PM
+-- Generation Time: Apr 09, 2022 at 04:44 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -33,7 +33,7 @@ CREATE TABLE `book` (
   `title` text NOT NULL,
   `catid` text NOT NULL,
   `theme` int(11) NOT NULL,
-  `synposis` text NOT NULL,
+  `synopsis` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `folder` text NOT NULL,
   `coverfile` text NOT NULL,
   `view` bigint(20) NOT NULL DEFAULT '0',
@@ -46,10 +46,8 @@ CREATE TABLE `book` (
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`bookid`, `title`, `catid`, `theme`, `synposis`, `folder`, `coverfile`, `view`, `lastchapter`, `online`, `timestamp`) VALUES
-(8, 'onepiece', '[1],[6]', 0, 'การผจญภัย', 'onepiece', '8111.jpg', 0, '', 0, '2022-03-31 21:57:12'),
-(9, 'โดเรมอน', '[1],[6]', 0, 'หุ่นยนต์น่ารัก', 'doraemon', '170652.jpg', 0, '', 0, '2022-03-31 22:08:48'),
-(10, 'testx', '[1],[2]', 4, 'xxxxx', 'dddd', '8116.jpg', 0, '', 0, '2022-04-01 16:52:24');
+INSERT INTO `book` (`bookid`, `title`, `catid`, `theme`, `synopsis`, `folder`, `coverfile`, `view`, `lastchapter`, `online`, `timestamp`) VALUES
+(39, 'One piece วันพีช', '[2],[6],[7]', 7, 'fjdfhkasd fjlaskdfjl lfsdj kjflsd fljsdkflj lskf flsjdfkls flksdfj lsfjlsa flsjdfkl fjlksdfjskldf fjlskdfjsl fjlsdkfjslkdfjsd fjslkdfj  flsjdfl jsdlkfjsl fljsdkfj lsdkf', 'onepeice', 'Group 1615.jpg', 0, '', 1, '2022-04-07 00:08:22');
 
 -- --------------------------------------------------------
 
@@ -71,7 +69,23 @@ INSERT INTO `category` (`catid`, `name`, `online`) VALUES
 (1, 'โรแมนติก', 1),
 (2, 'แฟนตาซี', 1),
 (6, 'ผจญภัย', 1),
-(7, 'ต่างมิติ', 0);
+(7, 'ต่างมิติ', 0),
+(8, 'ทดสอบ', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chapter`
+--
+
+CREATE TABLE `chapter` (
+  `id` int(11) NOT NULL,
+  `bookid` int(11) NOT NULL,
+  `type` text NOT NULL,
+  `chapter` text NOT NULL,
+  `coverfile` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cartoonfile` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -97,9 +111,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `book`, `category`, `rank`, `ads`, `admin`, `profilepic`, `hashkey`) VALUES
-(1, 'test', '1234', 1, 1, 1, 1, 1, 1, 'PNZK)*UrsTfmIu2S'),
+(1, 'test', '11122พ', 1, 1, 1, 1, 1, 9, 'fS0a7)lHwGPWRiX6'),
 (2, 'test2', 'dasd', 1, 0, 1, 1, 1, 1, 'asdasdasd'),
-(3, 'test3', '111222', 1, 1, 1, 0, 0, 2, '');
+(3, 'test3', '111222', 1, 1, 1, 0, 0, 2, ''),
+(4, 'admin', '111222', 1, 1, 1, 1, 1, 8, 'R)2F(xXQ8r1Cd%M!'),
+(5, 'art', '444444', 1, 0, 0, 0, 0, 5, '');
 
 --
 -- Indexes for dumped tables
@@ -118,6 +134,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`catid`);
 
 --
+-- Indexes for table `chapter`
+--
+ALTER TABLE `chapter`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -131,19 +153,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `bookid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `chapter`
+--
+ALTER TABLE `chapter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
