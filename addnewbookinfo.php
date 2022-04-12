@@ -15,16 +15,28 @@ $result = $db->select("user","*",[
 
 if(sizeof($result) > 0){
     if($result[0]['book'] == 1){
-        $db->insert("book",[
-            "title"=>$title,
-            "catid"=>$category,
-            "synposis"=>$synposis,
-            "folder"=>$folder,
-            "coverfile"=>$coverfile,
-           "theme"=>$theme
-        ]);
-        $insertId = $db->id();
-        echo $insertId;
+        //make folder
+        //check exist folder
+  
+            $filename = "cartoon/" . $folder;
+
+            if (!file_exists($filename)) {
+                mkdir("cartoon/" . $folder, 0777);
+                $db->insert("book",[
+                    "title"=>$title,
+                    "catid"=>$category,
+                    "synopsis"=>$synposis,
+                    "folder"=>$folder,
+                    "coverfile"=>$coverfile,
+                   "theme"=>$theme
+                ]);
+                $insertId = $db->id();
+                echo $insertId;
+        
+            } else {
+                echo "The directory exists.";
+            }
+       
     } else {
         echo "go to welcome";
     }
