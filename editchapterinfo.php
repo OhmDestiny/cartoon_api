@@ -21,7 +21,8 @@ if($coverFile == "NONE" && $cartoonFile =="NONE"){
         "type"=>$type,
         "chapter"=>$chapter,
         "orderid"=>$orderid,
-        "coverfile"=>$coverFile
+        "cartoonfile"=>$cartoonFile,
+      
     ],[
         "id"=>$recordid
     ]);
@@ -30,7 +31,7 @@ if($coverFile == "NONE" && $cartoonFile =="NONE"){
         "type"=>$type,
         "chapter"=>$chapter,
         "orderid"=>$orderid,
-        "cartoonfile"=>$cartoonFile
+        "coverfile"=>$coverFile
     ],[
         "id"=>$recordid
     ]);
@@ -46,5 +47,5 @@ if($coverFile == "NONE" && $cartoonFile =="NONE"){
     ]);
 }
 
-echo "finish";
+echo "finish"
 ?>
