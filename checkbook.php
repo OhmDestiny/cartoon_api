@@ -1,20 +1,15 @@
 <?php
 require_once('connection.php');
 $_POST = json_decode(file_get_contents("php://input"),true);
-$id= $_POST['id'];
+$page = $_POST['page'];
+$cartoonid  = $_POST['cartoonid'];
 $key = $_POST['key'];
 $result = $db->select("user","*",[
     'hashkey'=>$key
 ]);
-
 if(sizeof($result) > 0){
     if($result[0]['book'] == 1){
-        $result = $db->select("chapter","*",[
-            "id"=>$id
-        ]);
-        
-        echo json_encode($result);
-        
+     echo "pass";
     } else {
         echo "go to welcome";
 
@@ -22,7 +17,6 @@ if(sizeof($result) > 0){
 } else {
     echo "go to login";
 }
-
 
 
 ?>

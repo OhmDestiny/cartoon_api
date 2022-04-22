@@ -7,7 +7,6 @@ $category = $_POST['category'];
 $synposis = $_POST['synposis'];
 $folder = $_POST['folder'];
 $coverfile = $_POST['coverfile'];
-$theme = $_POST['theme'];
 
 $result = $db->select("user","*",[
     'hashkey'=>$key
@@ -28,7 +27,7 @@ if(sizeof($result) > 0){
                     "synopsis"=>$synposis,
                     "folder"=>$folder,
                     "coverfile"=>$coverfile,
-                   "theme"=>$theme
+        
                 ]);
                 $insertId = $db->id();
                 echo $insertId;

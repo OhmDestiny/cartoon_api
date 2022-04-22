@@ -17,8 +17,9 @@ if(sizeof($result) > 0){
         //delete Cover
         unlink("cover/" . $id . '.jpg');
         $dirname = 'cartoon/' . $result[0]['folder'];
-        array_map('unlink', glob("$dirname/*.*"));
-        rmdir($dirname);
+        // array_map('unlink', glob("$dirname/*.*"));
+        // rmdir($dirname);
+        
         } else {
         echo "go to welcome";
 
